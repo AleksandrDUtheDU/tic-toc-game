@@ -1,0 +1,251 @@
+@charset "UTF-8";
+@font-face {
+  font-family: Montserrat;
+  font-display: swap;
+  src: url("../fonts/Montserrat-Bold.woff2") format("woff2"), url("../fonts/Montserrat-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: Montserrat;
+  font-display: swap;
+  src: url("../fonts/Montserrat-Regular.woff2") format("woff2"), url("../fonts/Montserrat-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+.header {
+  height: 70px;
+  background: #525454;
+  box-shadow: 0px 4px 21px -1px rgba(34, 60, 80, 0.13);
+  position: fixed;
+  width: 100%;
+}
+
+.title__logo {
+  line-height: 70px;
+  text-transform: uppercase;
+  font-size: 1.7em;
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: block;
+}
+
+.logo__img {
+  width: 200px;
+}
+
+.header__burger-btn {
+  display: none;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.header__burger-btn span {
+  display: block;
+  position: absolute;
+  width: 30px;
+  height: 3px;
+  left: 5px;
+  background-color: black;
+  transition: background-color 0.3s, opacity 0.3s, transform 0.5s;
+  will-change: transform;
+}
+
+.header__burger-btn:hover span {
+  background-color: rgb(103, 103, 103);
+}
+
+.header__burger-btn span:nth-child(1) {
+  transform: translateY(-10px);
+}
+
+.header__burger-btn span:nth-child(3) {
+  transform: translateY(10px);
+}
+
+/* Крестик */
+.header.open .header__burger-btn span {
+  background-color: white;
+}
+
+.header.open .header__burger-btn span:nth-child(1) {
+  transform: translateY(0) rotate(45deg);
+}
+
+.header.open .header__burger-btn span:nth-child(2) {
+  opacity: 0;
+}
+
+.header.open .header__burger-btn span:nth-child(3) {
+  transform: translateY(0) rotate(-45deg);
+}
+
+.menu__list {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu__item:not(:last-child) {
+  margin-right: 20px;
+}
+
+.menu__link {
+  font-size: 1em;
+  color: #999;
+}
+.menu__link:hover {
+  color: #ffbe4c;
+  text-decoration: underline;
+}
+
+@media (max-width: 799px) {
+  .header__burger-btn {
+    display: block;
+  }
+  .menu {
+    position: absolute;
+    right: -350px;
+    top: 0;
+    width: 350px;
+    padding: 75px 20px 20px 20px;
+    background-color: #141414;
+    display: none;
+    transition: transform 0.5s, visibility 0.5s;
+    will-change: transform;
+  }
+  .menu__list {
+    display: block;
+  }
+  .menu__item:not(:last-child) {
+    margin-right: 0;
+  }
+  .menu__link {
+    color: #999;
+    font-size: 21px;
+    display: block;
+    padding: 10px;
+  }
+  .header.open .menu {
+    transform: translateX(-100%);
+    display: block;
+  }
+}
+.footer-wrapper {
+  background: #525454;
+  padding: 20px;
+}
+
+.contact-wrapper {
+  max-width: 300px;
+}
+
+.social_link {
+  margin-top: 15px;
+  display: flex;
+  height: 40px;
+  padding-left: 10px;
+  color: #999;
+  text-decoration: none;
+  line-height: 40px;
+  font-size: 1.1em;
+}
+.social_link:hover {
+  color: #ffbe4c;
+}
+
+.social_link_icons {
+  margin-right: 10px;
+  width: 40px;
+  height: 40px;
+}
+
+.main-wrapp {
+  padding-top: 70px;
+  background: linear-gradient(rgba(50, 50, 50, 0.7), rgba(0, 0, 0, 0.8)), url(@img/bg_wow.jpg) no-repeat 50%/cover;
+  color: white;
+}
+
+table {
+  border: 1px solid grey;
+}
+
+/* границы ячеек первого ряда таблицы */
+th {
+  border: 1px solid grey;
+}
+
+/* границы ячеек тела таблицы */
+td {
+  border: 1px solid grey;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  font-family: "Montserrat", "Roboto", sans-serif;
+}
+
+.body-wraper {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.title {
+  color: #ffbe4c;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mt20 {
+  margin-top: 20px;
+}

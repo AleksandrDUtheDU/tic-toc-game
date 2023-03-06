@@ -1,0 +1,18 @@
+.main-wrapp {
+  padding-top: $nav-height;
+  background: linear-gradient(rgba(50, 50, 50, 0.7), rgba(0, 0, 0, 0.8)),
+    url(@img/bg_wow.jpg) no-repeat 50% / cover;
+  color: white;
+}
+
+table {
+  border: 1px solid grey;
+}
+/* границы ячеек первого ряда таблицы */
+th {
+  border: 1px solid grey;
+}
+/* границы ячеек тела таблицы */
+td {
+  border: 1px solid grey;
+}
