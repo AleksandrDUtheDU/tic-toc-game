@@ -1,0 +1,29 @@
+.tictac-wrapp {
+  display: grid;
+  grid-template-columns: repeat(3, 30vw);
+  grid-template-rows: repeat(3, 30vw);
+}
+
+.box {
+  background: gray;
+  border: 2px solid white;
+  cursor: pointer;
+}
+
+.circle {
+  &:before {
+    content: "O";
+    padding: 0 4.6vw;
+    font-size: 24vw;
+    color: green;
+  }
+}
+
+.cross {
+  &:before {
+    content: "X";
+    padding: 0 7vw;
+    font-size: 24vw;
+    color: red;
+  }
+}

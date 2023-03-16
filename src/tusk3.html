@@ -6,39 +6,57 @@
       @@include('html/header.html', {})
       <main class="main-wrapp">
         <div class="container">
-          <h2 class="title">ЗАДАЧА 3</h2>
-          <div>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis
-            facere pariatur non perferendis nostrum, sed exercitationem numquam
-            consectetur voluptas nam dicta sequi soluta adipisci consequatur
-            aliquid ducimus! Aut, cupiditate earum. Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Alias sunt dolorum aliquam aperiam
-            voluptate rerum voluptates libero accusamus? Totam similique
-            delectus sequi explicabo dicta fuga vel nihil expedita quis ipsa.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Reprehenderit veniam autem tenetur sit quo iusto, nesciunt tempora
-            assumenda mollitia temporibus neque, sunt iste? Cumque fuga
-            aspernatur deserunt enim dicta molestiae voluptatibus soluta ea
-            laboriosam reiciendis. Nisi soluta beatae dolor dignissimos minima
-            error! Nostrum eaque voluptas veritatis ipsa saepe molestiae tempore
-            repudiandae neque distinctio laboriosam aliquam, alias ab,
-            temporibus perspiciatis aut ex quibusdam animi quia tempora id
-            optio? Distinctio praesentium, neque labore blanditiis ipsam
-            pariatur at commodi ipsa magnam error illum asperiores. Totam omnis
-            perspiciatis enim! Molestiae maxime molestias eum eius dignissimos
-            eveniet earum ab consectetur rerum quidem quas, aspernatur tempora,
-            recusandae est enim cum optio velit officia autem officiis error
-            vel. Cum, accusantium iusto. Illum corporis molestias, magni totam
-            provident dolore quos culpa rem. Doloremque accusantium maxime,
-            eligendi maiores nesciunt totam aut sint dignissimos nobis quaerat
-            cum, fugit pariatur voluptatibus libero reiciendis vel
-            exercitationem culpa corrupti veritatis eius et, in laudantium
-            quidem mollitia. Quo minima ipsam incidunt id facere consectetur
-            unde iste veritatis nesciunt et? Nulla autem asperiores eligendi
-            assumenda totam consectetur dicta veritatis eum, reiciendis
-            reprehenderit, consequatur corporis possimus dolore ullam repellat
-            rem incidunt, in sed nesciunt molestiae. Expedita, corrupti?
-            Voluptate, magni culpa? Enim harum dolore vitae neque earum!
+          <header class="mt20">
+            <h2 class="title">ЗАДАЧА 3</h2>
+          </header>
+
+          <div class="mt20">
+            <h3>С точки зрения верстки:</h3>
+
+            <ul>
+              <li class="mt20">
+                Нет alt-атрибутов у картинок, доступность снижается.
+              </li>
+              <li class="mt20">
+                В блоках контента можно вместо "div" использовать "section" т.к.
+                они могут быть сгруппированы по смыслу в отдельные независимые
+                блоки. (корабли, нации и т.д.)
+              </li>
+              <li class="mt20">
+                В меню навигации "nav", часто как хорошую практику считают
+                использование списков (ul>li), но это не принципиальный вопрос.
+              </li>
+              <li class="mt20">
+                Иконки (торпеды, скорость …) желательно, иметь в SVG формате.
+              </li>
+              <li class="mt20">
+                На планшете в разделе «галерея сражений», удобнее добавить
+                стрелки для перемотки артов.
+              </li>
+            </ul>
+            <h3 class="mt20">
+              Дополнительно т.к. частично относится к верстке и адаптивности.
+              (все нижесказанное более критично для мобильных устройств)
+            </h3>
+            <ul>
+              <li class="mt20">
+                Можно написать адаптацию загрузки картинок на webp при
+                использовании пользователями Google Chrome.
+              </li>
+              <li class="mt20">
+                Если смотреть
+                <a
+                  class="menu__link"
+                  target="_blank"
+                  href="https://pagespeed.web.dev/report?url=https%3A%2F%2Fkorabli.su%2Fru%2Fcontent%2Fgame%2F"
+                  >PageSpeed Insights</a
+                >
+                так же, возможно есть потенциал использования динамических
+                импортов неиспользуемого js кода, который блокирует первичную
+                загрузку страницы + такая же оптимизация css кода (но это все не
+                точно).
+              </li>
+            </ul>
           </div>
         </div>
       </main>

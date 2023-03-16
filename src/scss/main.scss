@@ -1,18 +1,72 @@
 .main-wrapp {
   padding-top: $nav-height;
+  padding-bottom: 40px;
   background: linear-gradient(rgba(50, 50, 50, 0.7), rgba(0, 0, 0, 0.8)),
-    url(@img/bg_wow.jpg) no-repeat 50% / cover;
+    url(../img/bg_wow.jpg) no-repeat 50% / cover;
   color: white;
 }
 
-table {
-  border: 1px solid grey;
+.col-1 {
+  width: 30%;
 }
-/* границы ячеек первого ряда таблицы */
-th {
-  border: 1px solid grey;
+
+.col-2 {
+  width: 70%;
 }
-/* границы ячеек тела таблицы */
-td {
-  border: 1px solid grey;
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  // white-space: normal;
+  th,
+  td {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  .table-ul {
+    text-align: left;
+  }
+  tr {
+    transition: all 0.3s;
+    &:hover {
+      background-color: $link-hover-color;
+      color: black;
+    }
+  }
+}
+
+thead th {
+  background: $link-hover-color;
+  color: black;
+}
+
+.main__link {
+  display: block;
+  font-size: 1em;
+  &:hover {
+    color: white;
+    text-decoration: underline;
+  }
+}
+
+@media (max-width: $breakpointPhone) {
+  .table {
+    tr {
+      display: block;
+      margin-bottom: 30px;
+    }
+    th,
+    td {
+      display: block;
+      text-align: center;
+      // border-right: none;
+    }
+    .col-1 {
+      width: 100%;
+    }
+    .col-2 {
+      width: 100%;
+    }
+  }
 }

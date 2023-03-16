@@ -177,24 +177,71 @@
 
 .main-wrapp {
   padding-top: 70px;
-  background: linear-gradient(rgba(50, 50, 50, 0.7), rgba(0, 0, 0, 0.8)), url(@img/bg_wow.jpg) no-repeat 50%/cover;
+  padding-bottom: 40px;
+  background: linear-gradient(rgba(50, 50, 50, 0.7), rgba(0, 0, 0, 0.8)), url(../img/bg_wow.jpg) no-repeat 50%/cover;
   color: white;
 }
 
-table {
-  border: 1px solid grey;
+.col-1 {
+  width: 30%;
 }
 
-/* границы ячеек первого ряда таблицы */
-th {
-  border: 1px solid grey;
+.col-2 {
+  width: 70%;
 }
 
-/* границы ячеек тела таблицы */
-td {
-  border: 1px solid grey;
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table th,
+.table td {
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+.table .table-ul {
+  text-align: left;
+}
+.table tr {
+  transition: all 0.3s;
+}
+.table tr:hover {
+  background-color: #ffbe4c;
+  color: black;
 }
 
+thead th {
+  background: #ffbe4c;
+  color: black;
+}
+
+.main__link {
+  display: block;
+  font-size: 1em;
+}
+.main__link:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+@media (max-width: 500px) {
+  .table tr {
+    display: block;
+    margin-bottom: 30px;
+  }
+  .table th,
+  .table td {
+    display: block;
+    text-align: center;
+  }
+  .table .col-1 {
+    width: 100%;
+  }
+  .table .col-2 {
+    width: 100%;
+  }
+}
 * {
   box-sizing: border-box;
 }
@@ -224,12 +271,6 @@ body {
   font-family: "Montserrat", "Roboto", sans-serif;
 }
 
-.body-wraper {
-  overflow: hidden;
-  width: 100%;
-  position: relative;
-}
-
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -248,4 +289,30 @@ body {
 
 .mt20 {
   margin-top: 20px;
+}
+
+.tictac-wrapp {
+  display: grid;
+  grid-template-columns: repeat(3, 30vw);
+  grid-template-rows: repeat(3, 30vw);
+}
+
+.box {
+  background: gray;
+  border: 2px solid white;
+  cursor: pointer;
+}
+
+.circle:before {
+  content: "O";
+  padding: 0 4.6vw;
+  font-size: 24vw;
+  color: green;
+}
+
+.cross:before {
+  content: "X";
+  padding: 0 7vw;
+  font-size: 24vw;
+  color: red;
 }
