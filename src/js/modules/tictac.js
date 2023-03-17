@@ -29,7 +29,8 @@ export const tictac = () => {
         board.append(box);
     }
 
-    const boxes = document.querySelectorAll("[data-num]")
+    const boxes = document.querySelectorAll('[data-num]')
+    // const boxes = document.querySelectorAll(`[data-num-${}]`)
 
     const aiSkynet = (num) => {
         if (currentParty == "cross") {
@@ -48,22 +49,73 @@ export const tictac = () => {
             [3, 5, 7],
         ]
 
-        const currentMoves = MM.filter(e => e.find(item => item == parsed))
+        const currentMoves = MM.filter(e => e.find(item => item == parsed)) //
         console.log(currentMoves)
 
-        const fafafa = currentMoves.map(item => {
-            item.filter(e => arrMoves[e - 1] !== currentParty)
+        const arrFreeBox = currentMoves.map(item => {
+            const arrItem = item.filter(e => arrMoves[e - 1] !== (currentParty || aiParty))
+            return arrItem
         })
 
-        let dfsdf1 = currentMoves[0].filter(e => arrMoves[e - 1] !== currentParty)
-        let dfsdf2 = currentMoves[1].filter(e => arrMoves[e - 1] !== currentParty)
-        let dfsdf3 = currentMoves[2].filter(e => arrMoves[e - 1] !== currentParty)
+        // for (let i = 0; i < arrFreeBox.length; i++) {
+        //     // code
+        //     if (arrFreeBox[i].length == 1) {
+        //         const node = document.querySelector(`[data-num='${arrFreeBox[i][0]}']`)
+        //         node.classList.add(aiParty);
+        //         console.log(node)
+        //         break;
+        //     } else {
+        //         const node = document.querySelector(`[data-num='${arrFreeBox[i][0]}']`)
+        //         node.classList.add(aiParty);
+        //         break;
+        //     }
+        // }
+
+        // if ()
+
+        const crit = arrFreeBox.filter(e => e.length == 1).join()
+        const five = arrFreeBox.filter(e => e.find(el => el == 5))
+        const odd = arrFreeBox.filter(e => e.find(el => el % 2 !== 0))
 
 
+        console.log(crit)
+        console.log(five)
+        console.log(odd)
 
-        console.log(fafafa)
-        console.log(dfsdf1, dfsdf2, dfsdf3)
 
+        if (crit) {
+            const num = crit[0][0]
+            const node = document.querySelector(`[data-num='${num}']`)
+            node.classList.add(aiParty);
+        } else if (five && !arrMoves[4]) {
+            const node = document.querySelector(`[data-num='5']`)
+            node.classList.add(aiParty);
+        } else if (arrMoves[4]) {
+            const node = document.querySelector(`[data-num='${odd[0][0]}']`)
+            node.classList.add(aiParty);
+
+            // arrFreeBox[0][0]
+        }
+
+
+        // arrFreeBox.forEach(e => {
+        //     if (e.length == 1) {
+        //         const node = document.querySelector(`[data-num='${e[0]}']`)
+        //         node.classList.add(aiParty);
+        //         console.log(node)
+        //         console.log(e[0])
+
+        //         // .classList.add(aiParty);
+        //         // arrMoves[e[0] - 1] = aiParty
+        //     } else {
+        //         console.log("биба")
+
+        //     }
+        // })
+
+        // arr.forEach()
+
+        console.log(arrFreeBox)
         console.log(aiParty)
     }
 
