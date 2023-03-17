@@ -294,7 +294,8 @@ body {
 .tictac-wrapp {
   display: grid;
   grid-template-columns: repeat(3, 30vw);
-  grid-template-rows: repeat(3, 30vw);
+  grid-template-rows: repeat(1, 30vw);
+  grid-auto-rows: 30vw;
 }
 
 .box {
@@ -315,4 +316,9 @@ body {
   padding: 0 7vw;
   font-size: 24vw;
   color: red;
+}
+
+.active {
+  background: #ffbe4c;
+  border: 2px solid black;
 }
