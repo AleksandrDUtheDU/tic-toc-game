@@ -1,26 +1,14 @@
 export const tictac = () => {
     const board = document.querySelector("#board");
     const party = document.querySelectorAll("[data-party]")
-    const arrMoves = []
-    const obj = {
-        1: '',
-        2: '',
-        3: '',
-        4: '',
-        5: '',
-        6: '',
-        7: '',
-        8: '',
-        9: '',
-    }
-    const arrMovesAI = []
+    const arrMoves = Array.from({ length: 9 }, (_, i) => i + 1)
+    let allFreeMoves = []
+
 
     let startGame = false
 
     let currentParty = "circle"
     let aiParty = "cross"
-
-
 
     for (let i = 1; i <= 9; i++) {
         const box = document.createElement("div");
@@ -30,12 +18,13 @@ export const tictac = () => {
     }
 
     const boxes = document.querySelectorAll('[data-num]')
-    // const boxes = document.querySelectorAll(`[data-num-${}]`)
 
     const aiSkynet = (num) => {
+
         if (currentParty == "cross") {
             aiParty = 'circle'
         }
+
         const parsed = parseInt(num);
 
         const MM = [
@@ -49,74 +38,61 @@ export const tictac = () => {
             [3, 5, 7],
         ]
 
-        const currentMoves = MM.filter(e => e.find(item => item == parsed)) //
-        console.log(currentMoves)
+        const currentMoves = MM.filter(e => e.find(item => item == parsed))
 
         const arrFreeBox = currentMoves.map(item => {
-            const arrItem = item.filter(e => arrMoves[e - 1] !== (currentParty || aiParty))
+            const arrItem = item.filter(e => (arrMoves[e - 1] !== currentParty) && (arrMoves[e - 1] !== aiParty))
             return arrItem
         })
 
-        // for (let i = 0; i < arrFreeBox.length; i++) {
-        //     // code
-        //     if (arrFreeBox[i].length == 1) {
-        //         const node = document.querySelector(`[data-num='${arrFreeBox[i][0]}']`)
-        //         node.classList.add(aiParty);
-        //         console.log(node)
-        //         break;
-        //     } else {
-        //         const node = document.querySelector(`[data-num='${arrFreeBox[i][0]}']`)
-        //         node.classList.add(aiParty);
-        //         break;
-        //     }
-        // }
+        const arrFoCrit = currentMoves.map(item => {
+            const arrItem = item.filter(e => arrMoves[e - 1] !== currentParty)
+            return arrItem
+        })
 
-        // if ()
+        // const crit = arrFoCrit.filter(e => e.length == 1).join().split(',')
+        const crit = arrFoCrit.filter(e => e.length == 1).flat()
 
-        const crit = arrFreeBox.filter(e => e.length == 1).join()
         const five = arrFreeBox.filter(e => e.find(el => el == 5))
         const odd = arrFreeBox.filter(e => e.find(el => el % 2 !== 0))
 
+        let arr1 = [1, 2, 3];
+        let arr2 = [2, 3];
+
+        const findOne = (haystack, arr) => {
+            return arr.filter(v => haystack.includes(v));
+        };
 
         console.log(crit)
-        console.log(five)
-        console.log(odd)
 
+        console.log(findOne(allFreeMoves, crit))
 
-        if (crit) {
-            const num = crit[0][0]
-            const node = document.querySelector(`[data-num='${num}']`)
-            node.classList.add(aiParty);
-        } else if (five && !arrMoves[4]) {
-            const node = document.querySelector(`[data-num='5']`)
-            node.classList.add(aiParty);
-        } else if (arrMoves[4]) {
-            const node = document.querySelector(`[data-num='${odd[0][0]}']`)
-            node.classList.add(aiParty);
-
-            // arrFreeBox[0][0]
-        }
-
-
-        // arrFreeBox.forEach(e => {
-        //     if (e.length == 1) {
-        //         const node = document.querySelector(`[data-num='${e[0]}']`)
-        //         node.classList.add(aiParty);
-        //         console.log(node)
-        //         console.log(e[0])
-
-        //         // .classList.add(aiParty);
-        //         // arrMoves[e[0] - 1] = aiParty
-        //     } else {
-        //         console.log("биба")
-
-        //     }
-        // })
-
-        // arr.forEach()
 
         console.log(arrFreeBox)
-        console.log(aiParty)
+
+        console.log(allFreeMoves)
+
+        if (Array.isArray(crit) && crit[0]) {
+            const num = crit[0]
+            const node = document.querySelector(`[data-num='${num}']`)
+            arrMoves[num - 1] = aiParty
+            node.classList.add(aiParty);
+            console.log('сработал крит')
+        } else if (five && arrMoves[4] == 5) {
+            const node = document.querySelector(`[data-num='5']`)
+            arrMoves[4] = aiParty
+            node.classList.add(aiParty);
+            console.log('сработал 5')
+        } else if (arrMoves[4] && arrFreeBox) {
+            const node = document.querySelector(`[data-num='${odd[0][0]}']`)
+            arrMoves[odd[0][0] - 1] = aiParty
+            node.classList.add(aiParty);
+            console.log('сработал нечет')
+            console.log(odd)
+        }
+
+        allFreeMoves = arrMoves.filter(e => Number.isInteger(e))
+
     }
 
     party.forEach(item => {
@@ -125,11 +101,9 @@ export const tictac = () => {
                 party.forEach(el => el.classList.remove("active"))
                 e.target.classList.add("active");
                 currentParty = e.target.dataset.party
-                console.log(currentParty)
             }
         });
     })
-
 
     boxes.forEach(e => {
         e.addEventListener("click", (e) => {
@@ -138,7 +112,6 @@ export const tictac = () => {
                 e.target.classList.add(currentParty);
                 arrMoves[e.target.dataset.num - 1] = currentParty
                 aiSkynet(e.target.dataset.num)
-                console.log(arrMoves)
             } else (
                 alert('ЗАНЯТО!!!')
             )
