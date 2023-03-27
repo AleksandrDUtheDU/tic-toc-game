@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 @font-face {
   font-family: Montserrat;
   font-display: swap;
@@ -6,6 +7,7 @@
   font-weight: 700;
   font-style: normal;
 }
+
 @font-face {
   font-family: Montserrat;
   font-display: swap;
@@ -13,10 +15,12 @@
   font-weight: 400;
   font-style: normal;
 }
+
 .header {
   height: 70px;
   background: #525454;
-  box-shadow: 0px 4px 21px -1px rgba(34, 60, 80, 0.13);
+  -webkit-box-shadow: 0px 4px 21px -1px rgba(34, 60, 80, 0.13);
+          box-shadow: 0px 4px 21px -1px rgba(34, 60, 80, 0.13);
   position: fixed;
   width: 100%;
   z-index: 100;
@@ -29,9 +33,15 @@
 }
 
 .header__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .logo {
@@ -61,7 +71,11 @@
   height: 3px;
   left: 5px;
   background-color: black;
+  -webkit-transition: background-color 0.3s, opacity 0.3s, -webkit-transform 0.5s;
+  transition: background-color 0.3s, opacity 0.3s, -webkit-transform 0.5s;
+  -o-transition: background-color 0.3s, opacity 0.3s, transform 0.5s;
   transition: background-color 0.3s, opacity 0.3s, transform 0.5s;
+  transition: background-color 0.3s, opacity 0.3s, transform 0.5s, -webkit-transform 0.5s;
   will-change: transform;
 }
 
@@ -70,20 +84,27 @@
 }
 
 .header__burger-btn span:nth-child(1) {
-  transform: translateY(-10px);
+  -webkit-transform: translateY(-10px);
+      -ms-transform: translateY(-10px);
+          transform: translateY(-10px);
 }
 
 .header__burger-btn span:nth-child(3) {
-  transform: translateY(10px);
+  -webkit-transform: translateY(10px);
+      -ms-transform: translateY(10px);
+          transform: translateY(10px);
 }
 
 /* Крестик */
+
 .header.open .header__burger-btn span {
   background-color: white;
 }
 
 .header.open .header__burger-btn span:nth-child(1) {
-  transform: translateY(0) rotate(45deg);
+  -webkit-transform: translateY(0) rotate(45deg);
+      -ms-transform: translateY(0) rotate(45deg);
+          transform: translateY(0) rotate(45deg);
 }
 
 .header.open .header__burger-btn span:nth-child(2) {
@@ -91,12 +112,18 @@
 }
 
 .header.open .header__burger-btn span:nth-child(3) {
-  transform: translateY(0) rotate(-45deg);
+  -webkit-transform: translateY(0) rotate(-45deg);
+      -ms-transform: translateY(0) rotate(-45deg);
+          transform: translateY(0) rotate(-45deg);
 }
 
 .menu__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -110,43 +137,12 @@
   font-size: 1em;
   color: #999;
 }
+
 .menu__link:hover {
   color: #ffbe4c;
   text-decoration: underline;
 }
 
-@media (max-width: 799px) {
-  .header__burger-btn {
-    display: block;
-  }
-  .menu {
-    position: absolute;
-    right: -350px;
-    top: 0;
-    width: 350px;
-    padding: 75px 20px 20px 20px;
-    background-color: #141414;
-    display: none;
-    transition: transform 0.5s, visibility 0.5s;
-    will-change: transform;
-  }
-  .menu__list {
-    display: block;
-  }
-  .menu__item:not(:last-child) {
-    margin-right: 0;
-  }
-  .menu__link {
-    color: #999;
-    font-size: 21px;
-    display: block;
-    padding: 10px;
-  }
-  .header.open .menu {
-    transform: translateX(-100%);
-    display: block;
-  }
-}
 .footer-wrapper {
   background: #525454;
   padding: 20px;
@@ -158,6 +154,8 @@
 
 .social_link {
   margin-top: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   height: 40px;
   padding-left: 10px;
@@ -166,6 +164,7 @@
   line-height: 40px;
   font-size: 1.1em;
 }
+
 .social_link:hover {
   color: #ffbe4c;
 }
@@ -176,10 +175,14 @@
   height: 40px;
 }
 
+.no-webp .main-wrapp{
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(50, 50, 50, 0.7)), to(rgba(0, 0, 0, 0.8))), url(../img/bg_wow.jpg) no-repeat 50%/cover;
+  background: -o-linear-gradient(rgba(50, 50, 50, 0.7), rgba(0, 0, 0, 0.8)), url(../img/bg_wow.jpg) no-repeat 50%/cover;
+  background: linear-gradient(rgba(50, 50, 50, 0.7), rgba(0, 0, 0, 0.8)), url(../img/bg_wow.jpg) no-repeat 50%/cover; }
+
 .main-wrapp {
   padding-top: 70px;
   padding-bottom: 40px;
-  background: linear-gradient(rgba(50, 50, 50, 0.7), rgba(0, 0, 0, 0.8)), url(../img/bg_wow.jpg) no-repeat 50%/cover;
   color: white;
 }
 
@@ -195,18 +198,24 @@
   width: 100%;
   border-collapse: collapse;
 }
+
 .table th,
 .table td {
   text-align: center;
   padding: 10px;
   border: 1px solid #ccc;
 }
+
 .table .table-ul {
   text-align: left;
 }
+
 .table tr {
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
   transition: all 0.3s;
 }
+
 .table tr:hover {
   background-color: #ffbe4c;
   color: black;
@@ -221,35 +230,21 @@ thead th {
   display: block;
   font-size: 1em;
 }
+
 .main__link:hover {
   color: white;
   text-decoration: underline;
 }
 
-@media (max-width: 500px) {
-  .table tr {
-    display: block;
-    margin-bottom: 30px;
-  }
-  .table th,
-  .table td {
-    display: block;
-    text-align: center;
-  }
-  .table .col-1 {
-    width: 100%;
-  }
-  .table .col-2 {
-    width: 100%;
-  }
-}
 * {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 *::before,
 *::after {
-  box-sizing: inherit;
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
 }
 
 a {
@@ -301,7 +296,9 @@ body {
 }
 
 .tictac-wrapp {
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: (1fr)[3];
   grid-template-columns: repeat(3, 1fr);
 }
 
@@ -315,6 +312,7 @@ body {
 .circle {
   position: relative;
 }
+
 .circle:before {
   content: " ";
   position: absolute;
@@ -329,7 +327,9 @@ body {
 .cross {
   position: relative;
 }
-.cross:before, .cross:after {
+
+.cross:before,
+.cross:after {
   content: " ";
   position: absolute;
   left: 50%;
@@ -337,14 +337,87 @@ body {
   width: 8px;
   background-color: red;
 }
+
 .cross:before {
-  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
 }
+
 .cross:after {
-  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg);
 }
 
 .active {
   background: #ffbe4c;
   border: 2px solid black;
 }
+
+@media (max-width: 799px) {
+  .header__burger-btn {
+    display: block;
+  }
+
+  .menu {
+    position: absolute;
+    right: -350px;
+    top: 0;
+    width: 350px;
+    padding: 75px 20px 20px 20px;
+    background-color: #141414;
+    display: none;
+    -webkit-transition: visibility 0.5s, -webkit-transform 0.5s;
+    transition: visibility 0.5s, -webkit-transform 0.5s;
+    -o-transition: transform 0.5s, visibility 0.5s;
+    transition: transform 0.5s, visibility 0.5s;
+    transition: transform 0.5s, visibility 0.5s, -webkit-transform 0.5s;
+    will-change: transform;
+  }
+
+  .menu__list {
+    display: block;
+  }
+
+  .menu__item:not(:last-child) {
+    margin-right: 0;
+  }
+
+  .menu__link {
+    color: #999;
+    font-size: 21px;
+    display: block;
+    padding: 10px;
+  }
+
+  .header.open .menu {
+    -webkit-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+            transform: translateX(-100%);
+    display: block;
+  }
+}
+
+@media (max-width: 500px) {
+  .table tr {
+    display: block;
+    margin-bottom: 30px;
+  }
+
+  .table th,
+  .table td {
+    display: block;
+    text-align: center;
+  }
+
+  .table .col-1 {
+    width: 100%;
+  }
+
+  .table .col-2 {
+    width: 100%;
+  }
+}
+
+.webp .main-wrapp{ background: -webkit-gradient(linear, left top, left bottom, from(rgba(50, 50, 50, 0.7)), to(rgba(0, 0, 0, 0.8))), url(../img/bg_wow.webp) no-repeat 50%/cover; background: -o-linear-gradient(rgba(50, 50, 50, 0.7), rgba(0, 0, 0, 0.8)), url(../img/bg_wow.webp) no-repeat 50%/cover; background: linear-gradient(rgba(50, 50, 50, 0.7), rgba(0, 0, 0, 0.8)), url(../img/bg_wow.webp) no-repeat 50%/cover; }
