@@ -69,18 +69,24 @@ export const tictac = () => {
                 return arrItem
             })
 
-            const arrFoCrit = currentMoves.map(item => {
-                const arrItem = item.filter(e => arrMoves[e - 1] !== currentParty)
+            const arrFoCrit = (party) => MM.map(item => {
+                const arrItem = item.filter(e => arrMoves[e - 1] !== party)
                 return arrItem
             })
 
-            const arrCrit = arrFoCrit.filter(e => e.length == 1).flat()
-            const crit = findArr(allFreeMoves, arrCrit)
+            const arrCrit = (party) => arrFoCrit(party).filter(e => e.length == 1).flat()
+
+            const critPlayer = findArr(allFreeMoves, arrCrit(currentParty))
+            const critAi = findArr(allFreeMoves, arrCrit(aiParty))
+
             const odd = arrFreeBox.filter(e => e.find(el => el % 2 !== 0)).flat()
 
-            if (crit.length > 0) {
-                aiMove(crit[0])
-                console.log('сработал крит')
+            if (critAi.length > 0) {
+                aiMove(critAi[0])
+                console.log('сработал крит AI')
+            } else if (critPlayer.length > 0) {
+                aiMove(critPlayer[0])
+                console.log('сработал крит Play')
             } else if (arrMoves[4] == 5) {
                 aiMove(5)
                 console.log('сработал 5')
