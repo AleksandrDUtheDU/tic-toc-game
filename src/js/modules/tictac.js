@@ -2,8 +2,9 @@ export const tictac = () => {
   const board = document.querySelector("#board");
   const party = document.querySelectorAll("[data-party]");
 
-  createArrayofNumbersFromOneToNum = (num) =>
-    Array.from({ length: num }, (_, i) => i + 1);
+  const createArrayofNumbersFromOneToNum = (num) => {
+    return Array.from({ length: num }, (_, i) => i + 1);
+  };
 
   let arrMoves = createArrayofNumbersFromOneToNum(9);
   let allFreeMoves = createArrayofNumbersFromOneToNum(9);
